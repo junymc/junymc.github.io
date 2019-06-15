@@ -22,3 +22,4 @@ The hardest part was ensuring that all requirements were met and that code could
 Once all the files were set up, all that was left for me to focus on was the part I enjoy the most and that's coding. After days of struggle I was able to get my code to finally run successfully and this boosted my confidence. 
 
 but took a while to complete because I was juggling with completing the project and moving to my new home. I know if I had more time I would be able to produce a finer product and I learned a lot from this experience having to start alone and kind of lost in the process. It felt great to complete it though and that's why I enjoy challenges. The feeling of accomplishing something so difficult especially for someone like me who has zero coding background and a language barrier. I expect this journey to be one of struggle, but filled with rewards of accomplishment.
+
