@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "*Ruby CLI Data Gem Project:  LasVegasEvent*"
+title:      "Ruby CLI Data Gem Project:  LasVegasEvent"
 date:       2019-05-26 23:31:19 -0400
 permalink:  ruby_cli_data_gem_project_lasvegasevent
 ---
@@ -14,12 +14,12 @@ Here is how I built my CLI ruby gem.
 
 ## Using Bundler to Set Up My Ruby Gem:
 I repeatedly watched Avi's video and ran through his guide to set up my folders and files using `Bundler`. `Bundler` provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed. It was pretty easy way to create a new gem just typing in `bundle gem LasVegas_event`.
-It creates a gem with a README, .gemspec, Rakefile and directory structure.
+It creates a gem with a README, .gemspec, Rakefile and all the directory structures.
 
 ## Setting Up My Environment:
 The hardest part was ensuring that all requirements were met and that code could be executed and produce the right information. In order to do that, I had to add all the `require` files/installed gems in my environment file. 
 
 Once all the files were set up, all that was left for me to focus on was the part I enjoy the most and that's coding. After days of struggle I was able to get my code to finally run successfully and this boosted my confidence. 
 
-but took a while to complete because I was juggling with completing the project and moving to my new home. I know if I had more time I would be able to produce a finer product and I learned a lot from this experience having to start alone and kind of lost in the process. It felt great to complete it though and that's why I enjoy challenges. The feeling of accomplishing something so difficult especially for someone like me who has zero coding background and a language barrier. I expect this journey to be one of struggle, but filled with rewards of accomplishment.
+It took a while to complete because I was juggling with completing the project and moving to my new home. I know if I had more time I would be able to produce a finer product and I learned a lot from this experience having to start alone and kind of lost in the process. It felt great to complete it though and that's why I enjoy challenges. The feeling of accomplishing something so difficult especially for someone like me who has zero coding background and a language barrier. I expect this journey to be one of struggle, but filled with rewards of accomplishment.
 
