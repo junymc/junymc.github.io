@@ -100,7 +100,7 @@ Now I creat all the files for each purpose.
       if input.to_i > 0 && input.to_i <= 10
           event = LasVegasEvent::Event.all[input.to_i-1]
 
-            puts "************************************************************************************************"
+            puts "*******************************************************************************************"
             puts " #{event.name}".light_blue
             puts "#{event.date_time} - #{event.location}".cyan
             puts "#{event.events_description}\n".yellow
@@ -109,9 +109,9 @@ Now I creat all the files for each purpose.
           event_website(event)
 
       elsif input == "list"
-              list_events
+            list_events
       elsif input == "exit"
-        goodbye
+            goodbye
       else
         puts "The event can not be found.".red
         puts "---------------------------"
@@ -205,7 +205,7 @@ end
 
 
 ## LasVegas_Event Ruby CLI Gem!
-Fianlly all my files are working as it suppose to and let's run the programe!
+Finally all my files are working as it suppose to and let's run the program!
 ### bin/run
 ```
 
@@ -219,7 +219,6 @@ LasVegasEvent::CLI.new.call
 ```
 
 
-After days of struggle I was able to get my code to finally run successfully and this boosted my confidence.
 
 
 ## Conclusion
