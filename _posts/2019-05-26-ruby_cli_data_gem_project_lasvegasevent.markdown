@@ -24,7 +24,7 @@ bundle gem LasVegas_event
 It creates a gem with a README, .gemspec, Rakefile and all the directory structures.
 
 ## Setting Up My Environment:
-The hardest part was ensuring that all requirements were met and that code could be executed and produce the right information. In order to do that, I had to add all the `require` files/installed gems in my environment file.
+The hardest part was ensuring that all requirements were met and that code could be executed and produce the right information. In order to do that, I had to add all the `require`, `require_relative`  files/installed gems in my environment file.
 
 ```
 
@@ -47,7 +47,6 @@ I created all the files for each purpose.
 
 ### cli.rb
 :Handling CLI display logic and user input
- 
  ```
  
  class LasVegasEvent::CLI
@@ -133,7 +132,6 @@ I created all the files for each purpose.
 
 ### event.rb
 :Objects - organize data and initialize all the instances
-
 ```
 
 class LasVegasEvent::Event
@@ -166,7 +164,6 @@ end
 
 ### scraper.rb
 :Scraping all the data from the website
-
 ```
 
 class LasVegasEvent::Scraper
@@ -204,6 +201,7 @@ end
 ## LasVegas_Event Ruby CLI Gem!
 The final step was to ensure that my run file was set up correctly for the program to execute.
 ### bin/run
+####  :Creating a new instance of CLI class and calling the method
 ```
 
 #!/usr/bin/env ruby
@@ -215,7 +213,7 @@ LasVegasEvent::CLI.new.call
 
 ```
 
-To run my application I type the command:
+To run my application, I type the command:
 ```
 
 bin/run
