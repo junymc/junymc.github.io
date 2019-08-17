@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Sinatra Project Movieview"
-date:       2019-08-17 20:16:51 +0000
+date:       2019-08-17 16:16:52 -0400
 permalink:  sinatra_project_movieview
 ---
 
@@ -20,7 +20,7 @@ permalink:  sinatra_project_movieview
  
  Let me show you how I built and what it does.
  
- ## Set Up
+## Set Up
 I had to create all the files and folders from scratch. Here's the MVC structure looks like:
  ```
   |── app
@@ -68,6 +68,24 @@ I had to create all the files and folders from scratch. Here's the MVC structure
 └── spec.md
 ```
 
+## MVC(Model View Controller)
+### Model : The logic of a web application
+ This is where data is manipulated and/or saved. Models would represent the data necessary for the application to work using Activerecord. `User` which would write and edit `MovieReview`, `Movie` which has all the reviews that users write. `User` and `Movie` has many relationship with `MovieReview` and `MovieReview` belongs to `User` and `Movie`. These associations work and successfully runs application by using ActiveRecord. How convenient it is!
+ 
+ ```
+ class MovieReview < ActiveRecord::Base
+    belongs_to :user
+    belongs_to :movie
+end
 
-	
-	
+class Movie < ActiveRecord::Base
+    has_many :movie_reviews
+    has_many :users, through: :movie_reviews
+end
+
+class User < ActiveRecord::Base
+    has_secure_password
+    has_many :movie_reviews
+    has_many :movies, through: :movie_reviews
+end
+```
