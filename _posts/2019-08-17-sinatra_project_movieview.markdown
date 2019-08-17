@@ -56,7 +56,7 @@ I had to create all the files and folders from scratch. Here's the MVC structure
 │   └── seeds.rb
 ├── public
 │   └── css
-│            └── style.css
+│   └── style.css
 ├── config.ru
 ├── Gemfile
 ├── README.md
@@ -64,52 +64,7 @@ I had to create all the files and folders from scratch. Here's the MVC structure
 └── spec.md
 
 ```
-```
- 
-  |── app
-  |             |── controllers
-  |             |     └ application_controller.rb
-  |             |     └ movies_controller.rb
-	|             |     └ reviews_controller.rb
-	|             |     └ users_controller.rb
-	|             |── models
-	|             |     └ movie_review.rb
-	|             |     └ movie.rb
-	|             |     └ user.rb
-	|           └── views
-	|                            |── movies
-	|                            |    └ index.erb
-	|                            |    └ show.erb
-  |                            |── reviews
-	|                            |    └ edit.erb
-	|                            |    └ index.erb
-	|                            |    └ new.erb
-	|                            |── users
-	|                            |    └ home.erb
-	|                            |    └ login.erb
-	|                            |    └ signup.erb
-	|                            |── error.erb
-	|                            |── index.erb
-	|                          └── layout.erb
-	|── config
-  |             └─ environment.rb
-	|── db
-	|             |── migrate
-	|             |     └ create_users.rb
-	|             |     └ create_movies.rb
-	|             |     └ create_movie_reviews.rb
-	|             |── schema.rb
-	|           └── seeds.rb
-	|── public
-  |             └─ css
-	|                   └ style.css
-	|── config.ru
-	|── Gemfile
-	|── License.md
-	|── Rakefile
-	|── README.md
-└── spec.md
-```
+
 
 ## MVC(Model View Controller)
 ### Model : The logic of a web application
