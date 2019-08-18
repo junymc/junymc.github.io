@@ -162,13 +162,13 @@ class ApplicationController < Sinatra::Base
     end
 
     helpers do
-def logged_in?
-    !!session[:user_id]
-end
+      def logged_in?
+         !!session[:user_id]
+      end
 
-def current_user
-		User.find_by(id: session[:user_id])
- end
+      def current_user
+		    User.find_by(id: session[:user_id])
+      end
 
      def authorize
          if !logged_in? || current_user.nil?
@@ -196,6 +196,7 @@ end
 ```
 
 
+
 ## Environment
 
 ### config.ru
@@ -216,10 +217,10 @@ run ApplicationController
 ```
 
 
-After everyting is set up correctly and I can check my apllication by typing:
+After everyting is set up correctly, I can check my apllication by typing:
 
 ```
-shotgun
+ > shotgun
 ```
 
 
