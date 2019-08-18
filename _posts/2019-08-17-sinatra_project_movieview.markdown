@@ -20,7 +20,9 @@ permalink:  sinatra_project_movieview
  
  Let me show you how I built and what it does.
  
-## Set Up
+## Setting Up
+
+### Structure
 
 I had to create all the files and folders from scratch. Here's the MVC structure looks like:
  ```
@@ -64,6 +66,34 @@ I had to create all the files and folders from scratch. Here's the MVC structure
 ├── Rakefile
 └── spec.md
 
+```
+
+
+### Gemfile
+
+Add all these required gems for the application below and simply type `bundle install` in your terminal then it will install all the gems including the `Gemfile.lock`.
+
+```
+source 'http://rubygems.org'
+
+gem 'sinatra'
+gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3', '~> 1.3.6'
+gem 'thin'
+gem 'shotgun'
+gem 'pry'
+gem 'bcrypt'
+gem 'tux'
+
+group :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end
 ```
 
 
@@ -164,3 +194,6 @@ def current_user
 
 end
 ```
+
+
+
