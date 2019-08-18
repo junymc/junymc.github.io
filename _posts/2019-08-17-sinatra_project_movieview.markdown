@@ -91,6 +91,7 @@ class User < ActiveRecord::Base
 end
 ```
 
+
 ### View : The 'front-end', user-facing part of a web application
 
 This is the only part of the app that user interacts with directly. Views generally consist of HTML and CSS. Sinatra uses `erb` files (Embedded Ruby) to dynamically generate html web pages and serve requested content. The views correspond to the routes/actions in the associated controllers, so there are views for showing movie list and reviews, displaying a signup/login form, and so on.
@@ -113,6 +114,7 @@ This is the only part of the app that user interacts with directly. Views genera
 </form>
 ```
 
+
 ### Controller : The go-between for models and views.
 
 The controller relays data from the browser to the application, and from the application to the browser. Using separated controllers for each model helps organize all the different routes and actions. `users_controller` controls signup/login and home routes. `movie_controller` focuses on the movie list and indivisual movie reviews. `reviews_controller` deals with the most part of the application’s functionality which is posting, editing and deleting the reviews. `application_controller` inherits `configure`, `helpers` and other methods to the other controllers so those don't need to be repeated in every other controllers.
@@ -130,13 +132,13 @@ class ApplicationController < Sinatra::Base
     end
 
     helpers do
-		def logged_in?
-			!!session[:user_id]
-		end
+def logged_in?
+    !!session[:user_id]
+end
 
-		def current_user
-			User.find_by(id: session[:user_id])
-    end
+def current_user
+		User.find_by(id: session[:user_id])
+ end
 
      def authorize
          if !logged_in? || current_user.nil?
