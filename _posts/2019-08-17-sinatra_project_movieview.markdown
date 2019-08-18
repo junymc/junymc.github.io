@@ -167,7 +167,7 @@ class ApplicationController < Sinatra::Base
       end
 
       def current_user
-			  User.find_by(id: session[:user_id])
+		  User.find_by(id: session[:user_id])
       end
 
      def authorize
@@ -179,7 +179,7 @@ class ApplicationController < Sinatra::Base
      def clean(text)
          Rack::Utils.escape_html(text)
      end
-
+		 
 end
 
     get '/' do
@@ -229,5 +229,5 @@ These are the main part of this project. Of course there's much more to talk abo
 
 ## Conclusion
 
-Using ActiveRecord is the most part that I enjoyed since it's such a great framework. It made my work much easier! I learned about RESTful route which provides mapping between HTTP verbs(get, post, put/patch, delete) to controller CRUD actions. There was time that I was confused but at the end, I understand what exactly they do.
+Using ActiveRecord is the most part that I enjoyed since it makes my job so easy. It made my work much easier! I learned about RESTful route which provides mapping between HTTP verbs(get, post, put/patch, delete) to controller CRUD actions. There was time that I was confused but at the end, I understand what exactly they do.
 I feel so great after all of the strugles. I just took another step to my goal which is becoming a developer. My journey continues and I will learn more and more till I get to my goal!
