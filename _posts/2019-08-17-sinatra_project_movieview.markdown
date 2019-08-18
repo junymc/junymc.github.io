@@ -196,4 +196,37 @@ end
 ```
 
 
+## Environment
 
+### config.ru
+In order to run this application, I will need all those files and code but also I have to make sure that I set up environment correctly. 
+
+```
+require './config/environment'
+
+if ActiveRecord::Migrator.needs_migration?
+  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+end
+
+use Rack::MethodOverride
+use ReviewsController
+use MoviesController
+use UsersController
+run ApplicationController
+```
+
+
+After everyting is set up correctly and I can check my apllication by typing:
+
+```
+shotgun
+```
+
+
+These are the main part of this project. Of course there's much more to talk about what I've learned and used in this Sinatra project.
+
+
+## Conclusion
+
+Using ActiveRecord is the most part that I enjoyed since it's such a great framework. It made my work much easier! I learned about RESTful route which provides mapping between HTTP verbs(get, post, put/patch, delete) to controller CRUD actions. There was time that I was confused but at the end, I understand what exactly they do.
+I feel so great after all of the strugles. I just took another step to my goal which is becoming a developer. My journey continues and I will learn more and more till I get to my goal!
