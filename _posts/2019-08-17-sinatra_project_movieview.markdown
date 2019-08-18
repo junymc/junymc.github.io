@@ -21,6 +21,7 @@ permalink:  sinatra_project_movieview
  Let me show you how I built and what it does.
  
 ## Set Up
+
 I had to create all the files and folders from scratch. Here's the MVC structure looks like:
  ```
  
@@ -66,8 +67,10 @@ I had to create all the files and folders from scratch. Here's the MVC structure
 ```
 
 
-## MVC(Model View Controller)
-### Model : The logic of a web application
+## MVC (Model View Controller)
+
+### Model  :  The logic of a web application
+
  This is where data is manipulated and/or saved. Models would represent the data necessary for the application to work using Activerecord. `User` which would write and edit `MovieReview`, `Movie` which has all the reviews that users write. `User` and `Movie` has many relationship with `MovieReview` and `MovieReview` belongs to `User` and `Movie`. These associations work and successfully runs application by using ActiveRecord. How convenient it is!
  
  ```
@@ -86,4 +89,63 @@ class User < ActiveRecord::Base
     has_many :movie_reviews
     has_many :movies, through: :movie_reviews
 end
+
+```
+
+### View : The 'front-end', user-facing part of a web application
+
+This is the only part of the app that user interacts with directly. Views generally consist of HTML and CSS. Sinatra uses `erb` files (Embedded Ruby) to dynamically generate html web pages and serve requested content. The views correspond to the routes/actions in the associated controllers, so there are views for showing movie list and reviews, displaying a signup/login form, and so on.
+
+```
+<form method="post" action="/reviews">
+   Movie Name : <input type="text" name="movie_name">
+   <br><br>
+   Review : <textarea name="review" id="review" cols="30" rows="5"></textarea>
+   <br><br>
+   Rate : 1<input type="radio" name="rate" value="1">
+          2<input type="radio" name="rate" value="2">
+          3<input type="radio" name="rate" value="3">
+          4<input type="radio" name="rate" value="4">
+          5<input type="radio" name="rate" value="5">
+   <br><br>
+   <input type="submit" value="Submit">
+   <br>
+   <p> <a href="/home">Home</a> </p>
+</form>
+
+```
+
+### Controller : The go-between for models and views.
+
+The controller relays data from the browser to the application, and from the application to the browser. Using separated controllers for each model helps organize all the different routes and actions. `users_controller` controls signup/login and home routes. `movie_controller` focuses on the movie list and indivisual movie reviews. `reviews_controller` deals with the most part of the application’s functionality which is posting, editing and deleting the reviews. Along with these controllers, `application_controller' makes the other controller do their job easily with `configure do` and `helpers do`.
+
+```
+require "./config/environment"
+
+class ApplicationController < Sinatra::Base
+
+    configure do
+        set :views, 'app/views'
+        set :public_folder, 'public'
+        enable :sessions
+        set :session_secret, "password_security"
+    end
+
+    helpers do
+		def logged_in?
+			!!session[:user_id]
+		end
+
+		def current_user
+			User.find_by(id: session[:user_id])
+		end
+
+    def authorize
+        if !logged_in? || current_user.nil?
+            redirect '/login'
+				end
+     end
+
+end
+
 ```
