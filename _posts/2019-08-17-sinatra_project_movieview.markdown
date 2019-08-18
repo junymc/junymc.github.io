@@ -167,7 +167,7 @@ class ApplicationController < Sinatra::Base
       end
 
       def current_user
-		    User.find_by(id: session[:user_id])
+			  User.find_by(id: session[:user_id])
       end
 
      def authorize
@@ -180,7 +180,7 @@ class ApplicationController < Sinatra::Base
          Rack::Utils.escape_html(text)
      end
 
-	end
+end
 
     get '/' do
         erb :index
