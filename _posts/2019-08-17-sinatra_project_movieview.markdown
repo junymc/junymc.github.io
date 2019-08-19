@@ -104,7 +104,6 @@ end
 
 
 The model is where data is managed. Models represent the data required for an application to work using ActiveRecord. The `User` class has write and edit permissions to the  `MovieReview` class. The `Movie` class contains all the reviews that end-users write. The `User` and `Movie` class  is related with the `MovieReview` class through the has_many ActiveRecord association.  `MovieReview` belongs to `User` and `Movie`. These associations work and successfully runs applications by using ActiveRecord making it very convenient.
-
  
  ```
  class MovieReview < ActiveRecord::Base
@@ -131,7 +130,6 @@ end
 The front-end or user-facing portion of an application is where the end-user interacts directly with an application. `Views` are generally made of HTML and CSS code. Sinatra uses `erb` files (Embedded Ruby) to dynamically create
 html web pages and serve requested content through the browser.  The `Views`  correspond to the routes/actions in the associated controllers so there are `Views` for showing movie lists/reviews, displaying sign-up or login forms etc. 
 
-
 ```
 <form method="post" action="/reviews">
    Movie Name : <input type="text" name="movie_name">
@@ -154,10 +152,8 @@ html web pages and serve requested content through the browser.  The `Views`  co
 ### Controller : The go-between for models and views.
 
 
-
 The controller bridges data between the application and the browser.  Separated controllers for each model help organize all the different routes and actions an application can use.The  `users_controller` controls signup/login and home routes. The `movie_controller` focuses on the movie list and individual movie reviews. The  `reviews_controller` handles the most of the applications functionality to include, CRUD or the posting, editing, and deleting review functions.
 The  `application_controller` inherits the `configure` , `helpers` and other methods so they do not need to be repeated in every controller. 
-
 
 ```
 require "./config/environment"
@@ -176,8 +172,8 @@ class ApplicationController < Sinatra::Base
          !!session[:user_id]
       end
 
-      def current_user
-		  User.find_by(id: session[:user_id])
+      def current_user    
+			User.find_by(id: session[:user_id])
       end
 
      def authorize
@@ -189,7 +185,7 @@ class ApplicationController < Sinatra::Base
      def clean(text)
          Rack::Utils.escape_html(text)
      end
-		 
+		     
 end
 
     get '/' do
@@ -212,7 +208,6 @@ end
 ### config.ru
 
 In order to run the application successfully it would require me to have all the files and code, but also ensure that the environment is set up correctly. 
-
 
 ```
 require './config/environment'
