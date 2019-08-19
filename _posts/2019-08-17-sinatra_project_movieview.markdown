@@ -5,7 +5,7 @@ date:       2019-08-17 16:16:52 -0400
 permalink:  sinatra_project_movieview
 ---
 
-I really enjoyed completing this project and felt I learned more than our initial project with CLI. I also felt more comfortable because I had a better grasp and understanding of what what was necessary to finish it. It's a simple application and I was able to accomplish it with the requirements listed below:
+I really enjoyed completing this project and felt I learned more than our initial project with CLI. I also felt more comfortable because I had a better grasp and understanding of what was necessary to finish it. It's a simple application and I was able to accomplish it with the requirements listed below:
  
 ```
  - MVC(Model View Controller)
