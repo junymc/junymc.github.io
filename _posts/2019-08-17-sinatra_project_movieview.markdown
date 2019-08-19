@@ -5,7 +5,7 @@ date:       2019-08-17 16:16:52 -0400
 permalink:  sinatra_project_movieview
 ---
 
- I've learned a lot during this project and had more fun than the first project. Also I felt like I know what I was doing compared to the previous project. It's still a simple application but I built it with all these:
+I really enjoyed completing this project and felt I learned more than our initial project with CLI. I also felt more comfortable because I had a better grasp and understanding of what what was necessary to finish it. It's a simple application and I was able to accomplish it with the requirements listed below:
  
 ```
  - MVC(Model View Controller)
@@ -15,16 +15,17 @@ permalink:  sinatra_project_movieview
  - Login/Logout
  ```
  
- This project is building a simple Content Management System (CMS) using the tools we've learned so far.
- It can track the reviews of movies from users and user needs to sign up to see or wirte reviews. Once the user is logged in, they are able to create, edit and delete their own reviews but they will still able to see other user's posts.
+ This project is building a simple Content Management System (CMS) utilizing the tools we've learned so far.
+The application is capable of alllowing users to register/sign up with a username and password.  Once they have registered an account they are able to create, edit, or delete their own movie review posts. They can modify their own entries, but are limited to viewing other user's posts. 
+
  
- Let me show you how I built and what it does.
+ The code below was used to set this application up:
  
 ## Setting Up
 
 ### Structure
 
-I had to create all the files and folders from scratch. Here's the MVC structure looks like:
+I had to create all the files and folders from scratch. Here's what MVC structure looks like:
  ```
  
 ├── app
@@ -101,7 +102,9 @@ end
 
 ### Model  :  The logic of a web application
 
- This is where data is manipulated and/or saved. Models would represent the data necessary for the application to work using Activerecord. `User` which would write and edit `MovieReview`, `Movie` which has all the reviews that users write. `User` and `Movie` has many relationship with `MovieReview` and `MovieReview` belongs to `User` and `Movie`. These associations work and successfully runs application by using ActiveRecord. How convenient it is!
+
+The model is where data is managed. Models represent the data required for an application to work using ActiveRecord. The `User` class has write and edit permissions to the  `MovieReview` class. The `Movie` class contains all the reviews that end-users write. The `User` and `Movie` class  is related with the `MovieReview` class through the has_many ActiveRecord association.  `MovieReview` belongs to `User` and `Movie`. These associations work and successfully runs applications by using ActiveRecord making it very convenient.
+
  
  ```
  class MovieReview < ActiveRecord::Base
@@ -124,7 +127,10 @@ end
 
 ### View : The 'front-end', user-facing part of a web application
 
-This is the only part of the app that user interacts with directly. Views generally consist of HTML and CSS. Sinatra uses `erb` files (Embedded Ruby) to dynamically generate html web pages and serve requested content. The views correspond to the routes/actions in the associated controllers, so there are views for showing movie list and reviews, displaying a signup/login form, and so on.
+
+The front-end or user-facing portion of an application is where the end-user interacts directly with an application. `Views` are generally made of HTML and CSS code. Sinatra uses `erb` files (Embedded Ruby) to dynamically create
+html web pages and serve requested content through the browser.  The `Views`  correspond to the routes/actions in the associated controllers so there are `Views` for showing movie lists/reviews, displaying sign-up or login forms etc. 
+
 
 ```
 <form method="post" action="/reviews">
@@ -147,7 +153,11 @@ This is the only part of the app that user interacts with directly. Views genera
 
 ### Controller : The go-between for models and views.
 
-The controller relays data from the browser to the application, and from the application to the browser. Using separated controllers for each model helps organize all the different routes and actions. `users_controller` controls signup/login and home routes. `movie_controller` focuses on the movie list and indivisual movie reviews. `reviews_controller` deals with the most part of the application’s functionality which is posting, editing and deleting the reviews. `application_controller` inherits `configure`, `helpers` and other methods to the other controllers so those don't need to be repeated in every other controllers.
+
+
+The controller bridges data between the application and the browser.  Separated controllers for each model help organize all the different routes and actions an application can use.The  `users_controller` controls signup/login and home routes. The `movie_controller` focuses on the movie list and individual movie reviews. The  `reviews_controller` handles the most of the applications functionality to include, CRUD or the posting, editing, and deleting review functions.
+The  `application_controller` inherits the `configure` , `helpers` and other methods so they do not need to be repeated in every controller. 
+
 
 ```
 require "./config/environment"
@@ -200,7 +210,9 @@ end
 ## Environment
 
 ### config.ru
-In order to run this application, I will need all those files and code but also I have to make sure that I set up environment correctly. 
+
+In order to run the application successfully it would require me to have all the files and code, but also ensure that the environment is set up correctly. 
+
 
 ```
 require './config/environment'
@@ -217,17 +229,21 @@ run ApplicationController
 ```
 
 
-After everyting is set up correctly, I can check my apllication by typing:
+After everything is set up correctly I run the application by typing the following command:
 
 ```
  > shotgun
 ```
 
 
-These are the main part of this project. Of course there's much more to talk about what I've learned and used in this Sinatra project.
+This summarizes the main part of the Sinatra project.
 
 
 ## Conclusion
 
-Using ActiveRecord is the most part that I enjoyed since it makes my job so easy. It made my work much easier! I learned about RESTful route which provides mapping between HTTP verbs(get, post, put/patch, delete) to controller CRUD actions. There was time that I was confused but at the end, I understand what exactly they do.
-I feel so great after all of the strugles. I just took another step to my goal which is becoming a developer. My journey continues and I will learn more and more till I get to my goal!
+Using ActiveRecord made this project incredibly easier to complete because of things like RESTful route that make data manipulation easier. At times I was confused, but towards the end of the project all the concepts seemed to come together and make more sense. I have to admit that coding in itself is definitely a challenge combined with the language barrier makes everything more of a struggle, but it also makes completing something that more satisfying. With each struggle and overcoming each obstacle I am getting closer and closer to my end goal of becoming a developer. 
+
+
+
+
+
