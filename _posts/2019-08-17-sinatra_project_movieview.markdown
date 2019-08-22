@@ -186,7 +186,7 @@ class ApplicationController < Sinatra::Base
          Rack::Utils.escape_html(text)
      end
 		     
-end
+   end
 
     get '/' do
         erb :index
