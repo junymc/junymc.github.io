@@ -59,15 +59,34 @@ end
 The polymophic association was complicated for me at first. I wasn't sure why I need it and how I'm gonna use it.. I was really confused. So what is `polymorphic association`?
 > "With polymorphic associations, a model can belong to more than one other model, on a single association."  - [Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
-My App allows users to sign up with two different types of account, as a host or a guest.
-So I set the `Account` model as the polymorphic. And the `Host` and the `Guest` share the `Account` as `:accountable'.
-`Account` will have ':accountable_type` which is "Host" or "Guest" when it creates and  `:accountable_id` which is same as `host.id` and `guest.id` when the `Host` and the `Guest` create. Now, they have `has_one` and `belongs_to` relationship so you will be able to call something like `host.account`, `account.accountable_type`, `account.accountable.` ... etc.
+Why did I neet the polymorphic? 
+My App allows users to sign up with two different types of accounts, as a host or a guest. So I set the `Account` model as the polymorphic. The `Host` and the `Guest` share the `Account` as `:accountable`. `Account` will have `:accountable_type`  which is "Host" or "Guest" when it creates and  `:accountable_id` which is same as `host.id` and `guest.id` when the `Host` and the `Guest` create. Now, they have `has_one` and `belongs_to` relationship so you will be able to call something like `host.account`, `account.accountable_type`, `account.accountable.` ... etc.
 
+Also, in order to make this work, you will have to set the polymophic in the migration.
+Add this line in the accounts table:
+```
+t.references :accountable, polymorphic: true, index: true
+```
 
-run the command below to create your database:
+Run the command below to create your database:
 ```
 $ rails db:migrate
 ```
+Lookat your schema to make sure everything looks good before you move on. My accounts table will look like this in the schema.
+```
+create_table "accounts", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "accountable_type"
+    t.integer "accountable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+   
+    t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
+ end
+ ```
+ 
+ 
 
 Now, we need our controllers to implant all the actions.
 ```
