@@ -57,7 +57,12 @@ end
 ## Ploymorphic Association
 
 The polymophic association was complicated for me at first. I wasn't sure why I need it and how I'm gonna use it.. I was really confused. So what is `polymorphic association`?
-> "With polymorphic associations, a model can belong to more than one other model, on a single association." -[Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
+> "With polymorphic associations, a model can belong to more than one other model, on a single association."  - [Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
+
+My App allows users to sign up with two different types of account, as a host or a guest.
+So I set the `Account` model as the polymorphic. And the `Host` and the `Guest` share the `Account` as `:accountable'.
+`Account` will have ':accountable_type` which is "Host" or "Guest" when it creates and  `:accountable_id` which is same as `host.id` and `guest.id` when the `Host` and the `Guest` create. Now, they have `has_one` and `belongs_to` relationship so you will be able to call something like `host.account`, `account.accountable_type`, `account.accountable.` ... etc.
+
 
 run the command below to create your database:
 ```
