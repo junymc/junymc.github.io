@@ -55,7 +55,8 @@ end
 ```
 
 
-## Ploymorphic Association
+
+### Ploymorphic Association
 
 The polymophic association was complicated for me at first. I wasn't sure why I need it and how I'm gonna use it.. I was really confused. So what is `polymorphic association`?
 > "With polymorphic associations, a model can belong to more than one other model, on a single association."  - [Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
@@ -88,11 +89,148 @@ create_table "accounts", force: :cascade do |t|
  ```
  
  
+### Controllers
 
-Now, we need our controllers to implant all the actions.
+Now, we need our controllers to implant all the logic and actions.
 ```
 $ rails g controller accounts
 ```
 Do the same for the other controllers.
+I tried to stick with RESTful routes, so my methods in the controller are pretty simple. Mainly I have all the CRUD actions. `parties_controller` is going to have most logic and actions. Here is what it looks like:
+```
+class PartiesController < ApplicationController
+ before_action :verify_accountable
+ before_action :find_party, :party_host, only: [:edit, :update, :destroy]
+ 
+  def index
+    @parties = Party.all
+  end
+
+  def new
+    host?
+    if params[:host_id]
+      find_host
+    end
+    @party = Party.new
+  end
+
+  def create
+    host?
+    @party = Party.new(party_params)
+    if params[:host_id]
+      find_host
+      @party.host = @host
+    end
+  
+    if @party.save
+      redirect_to host_party_path(@party.host, @party)
+    else
+      render :new
+    end
+  end
+
+  def show
+    find_party
+  end
+
+  def edit
+    if authorized_host
+      render :edit
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to party_path(@party)
+    end
+  end
+
+  def update
+    if authorized_host
+      @party.update(party_params)
+      redirect_to host_party_path(@party.host, @party)
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to parties_path
+    end
+  end
+
+  def destroy
+    @host = @party.host
+    if authorized_host
+      @party.destroy
+      redirect_to host_path(current_user)
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to parties_path
+    end
+  end
+
+  private
+
+  def party_params
+    params.require(:party).permit(:name, :description, :location, :date_time, :dress_code, :host_id)
+  end
+
+  def find_party
+    @party = Party.find(params[:id])
+  end
+
+  def find_host
+    @host = Host.find(params[:host_id])
+  end
+
+  def party_host
+    if params[:host_id]
+      find_host
+      @party.host = @host
+    end
+  end
+
+  def authorized_host
+    current_user == @host
+  end
+
+end
+
+```
+
+I used `helpers` to reducing repetition of codes so it looks DRY(Don't Repeat Yourself). You can let the helpers run before you run any actions by adding `before_action` on top of your controller.
+
+### Routes
+
+After set up all the controllers, what we need to do is set the routes. The routes will connect the controllers and views so it dispalys the objects and actions on the browser. Since I have `many-to-many` realtionship, I used nested resources.
+My routes looks like below:
+```
+# app/config/routes.rb
+
+Rails.application.routes.draw do
+
+  root to: 'welcome#root'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure' => 'welcome#root'
+  get '/auth_login' => 'welcome#auth_login'
+  get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
+
+  
+  resources :guests do
+    resources :invites
+  end
+
+  resources :parties do
+    resources :invites
+  end
+
+  resources :hosts do
+    resources :parties
+  end
+
+  resources :accounts, only: [:new, :create]
+  resources :parties
+  resources :invites
+  
+  
+end
+```
 
 
