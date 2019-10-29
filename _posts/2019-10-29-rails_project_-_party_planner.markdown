@@ -9,7 +9,7 @@ This project was really hard for me. Rails is such a powerful framework but in o
 
 My rails project is building an application that helps you to track all your party list as a host or a guest.
 
-##Creating a new project
+## Creating a new project
 
 First, create a new project using the command below:
 ```
@@ -53,6 +53,11 @@ class Party < ApplicationRecord
     has_many :guests, through: :invites
 end
 ```
+
+## Ploymorphic Association
+
+The polymophic association was complicated for me at first. I wasn't sure why I need it and how I'm gonna use it.. I was really confused. So what is `polymorphic association`?
+> "With polymorphic associations, a model can belong to more than one other model, on a single association." -[Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
 run the command below to create your database:
 ```
