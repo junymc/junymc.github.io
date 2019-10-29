@@ -54,6 +54,7 @@ class Party < ApplicationRecord
 end
 ```
 
+
 ## Ploymorphic Association
 
 The polymophic association was complicated for me at first. I wasn't sure why I need it and how I'm gonna use it.. I was really confused. So what is `polymorphic association`?
@@ -72,7 +73,7 @@ Run the command below to create your database:
 ```
 $ rails db:migrate
 ```
-Lookat your schema to make sure everything looks good before you move on. My accounts table will look like this in the schema.
+Check  your schema to make sure everything looks good before you move on. The accounts table will look like this in the schema.
 ```
 create_table "accounts", force: :cascade do |t|
     t.string "email"
