@@ -233,4 +233,27 @@ Rails.application.routes.draw do
 end
 ```
 
+### Omniauth
+
+Omniauth lets you use a third-party like Google, Facebook, or Twitter to authenticate and store users login information in your web application so users don't have to create a separate account in your application and still can access. 
+After strugging setting up the omniauth, I finaly made it work with `omniauth-google`. I will share how I set it up in my application.
+First, add `gem 'omniauth-google-oauth2'` in your Gemfile and run `bundle install` to install the gem and dependencies. Create a file `config/initializers/omniauth.rb` and add code below:
+```
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+end
+```
+You can to get the `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from the Google Cloud Platform Console.
+And add this code in the Account model:
+```
+ def self.from_omniauth(auth)
+      # Creates a new user only if it doesn't exist
+      where(email: auth.info.email).first_or_initialize do |account|
+        account.email = auth.info.email
+        account.password = Sysrandom.hex(30)
+      end
+    end
+```
+
+This code will create the account object when user try to login.
 
