@@ -235,8 +235,8 @@ end
 
 ### Omniauth
 
-Omniauth lets you use a third-party like Google, Facebook, or Twitter to authenticate and store users login information in your web application so users don't have to create a separate account in your application and still can access. 
-After strugging setting up the omniauth, I finaly made it work with `omniauth-google`. I will share how I set it up in my application.
+Omniauth lets you use a third-party like Google, Facebook, or Twitter to authenticate and store user's login information in your web application so users don't have to create a separate account in your application and still can access. 
+After strugging setting up the omniauth, I finaly made it to work with `omniauth-google`. I will share how I set it up in my application.
 First, add `gem 'omniauth-google-oauth2'` in your Gemfile and run `bundle install` to install the gem and dependencies. Create a file `config/initializers/omniauth.rb` and add code below:
 ```
 Rails.application.config.middleware.use OmniAuth::Builder do
@@ -255,5 +255,46 @@ And add this code in the Account model:
     end
 ```
 
-This code will create the account object when user try to login.
+This code will create the account object when user login. 
 
+```
+def googleAuth
+        # Get access tokens from the google server
+        access_token = request.env["omniauth.auth"]
+        @account = Account.from_omniauth(access_token)
+        log_in(@account)
+        # Access_token is used to authenticate request made from the rails application to the google server
+        @account.google_token = access_token.credentials.token
+        # Refresh_token to request new access_token
+        # Note: Refresh_token is only sent once during the first request
+        refresh_token = access_token.credentials.refresh_token
+        @account.google_refresh_token = refresh_token if refresh_token.present?
+        if @account.save
+           if @account.accountable == nil
+            redirect_to auth_login_path
+           elsif @account.accountable != nil
+            redirect_to parties_path
+           end
+        else
+            flash[:danger] = "Something went wrong, try again!"
+            redirect_to root_path
+        end
+end
+```
+I have this code above in the sessions_controller. This manages the callback from google and redirect to different paths depends on the accountable is nil or not.
+The last thing you have to do is set routes for the google callback in the `config/routes.rb`.
+```
+get 'auth/:provider/callback', to: 'sessions#googleAuth'
+get 'auth/failure' => 'welcome#root'
+```
+
+Now, add the link to the "Log in with Google" in your view, here we go, done!
+
+You can run the application with code below:
+```
+$ rails s
+```
+ Go to your browser and open http://localhost:3000, you will see the root page to signup/login/logout.
+ 
+ ## Conclusion
+It was a long journey till this project is done. Of course I struggled as always in the begining, more than CLI or Sinatra project. But also, I've learned a lot of things as always at the end. The most important thing that I learned is "Understand the logic and think as the real world.". If there 's something wrong, there is reason for it too. While I try to figure out what's wrong or where to fix, my troubleshooting skill was getting better and better, Understanding errors and analyzing codes are one of the skills that developers need to have as much as creating a new application.
