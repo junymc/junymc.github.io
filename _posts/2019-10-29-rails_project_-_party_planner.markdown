@@ -5,9 +5,10 @@ date:       2019-10-29 14:50:11 -0400
 permalink:  rails_project_-_party_planner
 ---
 
-This project was really hard for me. Rails is such a powerful framework but in order to use all the magical tools, I had to know what it does and how it works. I think I just memorized the syntax and code itself rather than actually understanding the logic. As further I move on, I learned one by one and now, I understand a lot more than when I strated. I'm going to share how I built my application and what I've learned while I was working on it.
-
-My rails project is building an application that helps you to track all your party list as a host or a guest.
+This project was really hard for me. Rails is a very powerful framework, but in order to use this magical tool it still requires a lot of skill to utilize it. I think I just memorized the syntax and code itself rather than actually understanding the logic. As
+I struggled of using Rails I began to understand the framework and through this I was able to build an application that
+that allows you to track parties as a host or guest. 
+ 
 
 ## Creating a new project
 
@@ -15,23 +16,19 @@ First, create a new project using the command below:
 ```
 $ rails new rails_project_party_planner
 ```
-This will give you nice basic structure that you can strat with.
-Then type `bundle install` in your terminal to install all the gems and dependencies that you need for the applaication. You will need add a few more gems later when we work on the `omniauth` , `bootstrap`  and more.. But for now, we will set up models and migrations first.
-
+This formulates a basic structure for you to work with. 
+Then type `bundle install` in your terminal to install all the gems and dependencies that you require for the application. You will to need add a few more gems later when we work on the `omniauth` , `bootstrap`  and more, but for now we will set up our models and migrations first.
 I used `rails generator` to create models and migrations.
-Type the following command in your termianl:
+Type the following command in your terminal:
 ```
 $ rails g model account email password_digest
 ```
-This will create a model and a migration for `Account`. You can do the same way for the other models.
-After create all the migration, set the associations in the models.
-I have these relationships between models:
-```
-class Account < ApplicationRecord
-   belongs_to :accountable, :polymorphic => true, optional: true
+This will create a model and a migration for `Account`. You can do it the same way for the other models.
+After creating the migrations, set the associations in the models.
+Liste :accountable, :polymorphic => true, optional: true
 end
 
-class Guest < ApplicationRecord
+class Guest d< ApplicationRecord
     has_one :account, :as => :accountable
     has_many :invites
     has_many :parties, through: :invites
@@ -58,7 +55,7 @@ end
 
 ### Ploymorphic Association
 
-The polymophic association was complicated for me at first. I wasn't sure why I need it and how I'm gonna use it.. I was really confused. So what is `polymorphic association`?
+The polymophic association was complicated for me at first. I wasn't sure why I needed it and how I was going to use it.. I was really confused. So what is `polymorphic association`?
 > "With polymorphic associations, a model can belong to more than one other model, on a single association."  - [Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
 Why did I neet the polymorphic? 
@@ -192,11 +189,11 @@ end
 
 ```
 
-I used `helpers` to reducing repetition of codes so it looks DRY(Don't Repeat Yourself). You can let the helpers run before you run any actions by adding `before_action` on top of your controller.
+I used `helpers` to reduce repetition of code so it looks DRY(Don't Repeat Yourself). You can let the helpers run before you run any actions by adding `before_action` on top of your controller.
 
 ### Routes
 
-After set up all the controllers, what we need to do is set the routes. The routes will connect the controllers and views so it dispalys the objects and actions on the browser. Since I have `many-to-many` realtionship, I used nested resources.
+After setting up all the controllers we have to set the routes. The routes will connect the controllers and views so it dispalys the objects and actions on the browser. Since I have `many-to-many` realtionship, I used nested resources.
 My routes looks like below:
 ```
 # app/config/routes.rb
@@ -299,4 +296,4 @@ $ rails s
  
  ## Conclusion
  
-It was a long journey till this project is done. Of course I struggled as always in the begining, more than CLI or Sinatra project. But also, I've learned a lot of things as always at the end. The most important thing that I learned is "Understand the logic and think as the real world.". If there 's something wrong, there is reason for it too. While I try to figure out what's wrong or where to fix, my troubleshooting skill was getting better and better, Understanding errors and analyzing codes are one of the skills that developers need to have as much as creating a new application.
+ The journey to complete this project was hard, but really rewarding to complete. It was more difficult then CLI or Sinatra project. But also, I've learned a lot of things as always at the end. The most important thing that I learned is "Understand the logic and think as the real world.". If there 's something wrong, there is reason for it too. While I try to figure out what's wrong or where to fix, my troubleshooting skill have improved, Understanding errors and analyzing code are one of the s developers need to have as much as creating a new application.
