@@ -25,10 +25,14 @@ $ rails g model account email password_digest
 ```
 This will create a model and a migration for `Account`. You can do it the same way for the other models.
 After creating the migrations, set the associations in the models.
-Liste :accountable, :polymorphic => true, optional: true
+
+```
+class Account < ApplicationRecord
+    has_secure_password
+    belongs_to :accountable, :polymorphic => true, optional: true
 end
 
-class Guest d< ApplicationRecord
+class Guest < ApplicationRecord
     has_one :account, :as => :accountable
     has_many :invites
     has_many :parties, through: :invites
