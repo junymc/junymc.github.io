@@ -233,6 +233,7 @@ Rails.application.routes.draw do
 end
 ```
 
+
 ### Omniauth
 
 Omniauth lets you use a third-party like Google, Facebook, or Twitter to authenticate and store user's login information in your web application so users don't have to create a separate account in your application and still can access. 
@@ -297,4 +298,5 @@ $ rails s
  Go to your browser and open http://localhost:3000, you will see the root page to signup/login/logout.
  
  ## Conclusion
+ 
 It was a long journey till this project is done. Of course I struggled as always in the begining, more than CLI or Sinatra project. But also, I've learned a lot of things as always at the end. The most important thing that I learned is "Understand the logic and think as the real world.". If there 's something wrong, there is reason for it too. While I try to figure out what's wrong or where to fix, my troubleshooting skill was getting better and better, Understanding errors and analyzing codes are one of the skills that developers need to have as much as creating a new application.
