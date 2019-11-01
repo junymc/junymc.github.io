@@ -56,6 +56,7 @@ end
 
 
 
+
 ### Ploymorphic Association
 
 The polymophic association was complicated for me at first. I wasn't sure why I needed it and how I was going to use it.. I was really confused. So what is a `polymorphic association`?
@@ -63,7 +64,7 @@ The polymophic association was complicated for me at first. I wasn't sure why I 
 > "With polymorphic associations, a model can belong to more than one other model, on a single association."  - [Ruby on Rails Guide](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
 Why did I need the polymorphic? 
-My App allows users to sign up with two different types of accounts, as a host or a guest. So I set the `Account` model as the polymorphic. The `Host` and the `Guest` share the `Account` as `:accountable`. `Account` will have `:accountable_type`  which is "Host" or "Guest" when it creates and  `:accountable_id` which is same as `host.id` and `guest.id` when the `Host` and the `Guest` create. Now, they have `has_one` and `belongs_to` relationship so you will be able to call something like `host.account`, `account.accountable_type`, `account.accountable.` ... etc.
+My App allows users to sign up with two different types of accounts, as a host or a guest. So I set the `Account` model as the polymorphic. The `Host` and the `Guest` share the `Account` as `:accountable`. `Account` will have `:accountable_type`  which is "Host" or "Guest" when it creates and  `:accountable_id` which is same as `host.id` and `guest.id` when the `Host` and the `Guest` create. Now, they have `has_one` and `belongs_to` relationships so you will be able to call something like `host.account`, `account.accountable_type`, `account.accountable.` ... etc.
 
 Also, in order to make this work, you will have to set the polymophic in the migration.
 Add this line in the accounts table:
@@ -88,6 +89,7 @@ create_table "accounts", force: :cascade do |t|
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
  end
  ```
+ 
  
  
 ### Controllers
@@ -195,6 +197,7 @@ end
 
 I used `helpers` to reduce repetition of code so it looks DRY(Don't Repeat Yourself). You can let the helpers run before you run any actions by adding `before_action` on top of your controller.
 
+
 ### Routes
 
 After setting up all the controllers we have to set the routes. The routes will connect the controllers and views so it displays the objects and actions within the browser. Since I have the `many-to-many` realtionship, I used nested resources.
@@ -235,12 +238,14 @@ end
 ```
 
 
+
 ### Omniauth
 
 Omniauth lets you utilize third-party accounts like Google, Facebook, or Twitter to authenticate and store user's login information in your web application so users don't have to create a separate account in your application for access.
 After strugging setting up the omniauth, I finaly made it to work with `omniauth-google`. Below is how I set this up.
 
-First, add `gem 'omniauth-google-oauth2'` in your Gemfile and run `bundle install` to install the gem and dependencies. Create a file `config/initializers/omniauth.rb` and add code below:
+First, add `gem 'omniauth-google-oauth2'` in your Gemfile and run `bundle install` to install the gem and dependencies.
+Create a file `config/initializers/omniauth.rb` and add code below:
 ```
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
@@ -258,7 +263,7 @@ And add this code in the Account model:
     end
 ```
 
-This code will create the account object when user login. 
+This code will create the account object when user login. ( I installed `gem 'sysrandom'` for random password for users.)
 
 ```
 def googleAuth
