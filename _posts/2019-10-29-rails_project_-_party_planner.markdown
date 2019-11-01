@@ -16,7 +16,7 @@ First, create a new project using the command below:
 $ rails new rails_project_party_planner
 ```
 This formulates a basic structure for you to work with. 
-Then type `bundle install` in your terminal to install all the gems and dependencies that you require for the application. You will to need add a few more gems later when we work on the `omniauth` , `bootstrap`  and more, but for now we will set up our models and migrations first.
+Then type `bundle install` in your terminal to install all the gems and dependencies that you require for the application. You will need to add a few more gems later when we work on the `omniauth` , `bootstrap`  and more, but for now we will set up our models and migrations first.
 I used `rails generator` to create models and migrations.
 Type the following command in your terminal:
 ```
