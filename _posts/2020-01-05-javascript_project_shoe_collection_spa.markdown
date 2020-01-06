@@ -127,7 +127,8 @@ button:hover {
 ```
 
 ### Javascript
-So the javascript is the main part that displays all the elements and has the functionalities that change the page by user's action. It fetches all the data from the json that rendered by rails backend side. First, it was hard to understand the connection between the backend and frontend, also between the different classes in the different files. I had to make sure that they all know what is going on the other side. 
+So the javascript is the main part that displays all the elements and has the functionalities that change the page by user's action. It fetches all the data from the json that rendered by rails backend side. First, it was hard to understand the connection between the backend and frontend, also between the different classes in the different files. I had to make sure that they all know what is going on the other side.
+
 `App` class is the main guy who gets and reads the informations and give them out  to `BrandSelector` class and `DisplayManager` class. These two guys will create the brand and shoe, render them to display and send POST request, as well as DELETE request to the backend through the adapters.
 
 ```
@@ -168,7 +169,7 @@ class BrandSelector {
     }
 	}
 ```
-	
+
 `BrandAdapter` and `ShoeAdapter`  will request POST and DELETE then fetch all the data from the rail side based on baseURL(http://localhost:3000/api/v1). This part is the most complecated in the project... I've watched Cernan and Micah's videos over and over during this project. Evrytime there's new funtionality, I had to code back and forth in between those files and sometimes I got lost what I am doing.
 
 ```
@@ -205,7 +206,7 @@ class BrandAdapter {
         }
 			}
 ```
-		
+
 After about the itme that I had to add this delete button for my shoe, I was able to connect the code between files and with the backend without help. I was so proud of myself that I made it work!! Well, there was a little issues and had to get some help later on but I made it work mostly by myself. That was awesome. 
 
 ## Conclusion
