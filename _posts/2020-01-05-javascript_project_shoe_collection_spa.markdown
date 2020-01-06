@@ -9,6 +9,7 @@ Finally I moved another step closer to become a programmer! Everytime I do my pr
 
 ## Backend - Rails API
 I have two models for this API. Brand class and Shoe class. Their relationship is `has_many` and `belongs_to`. 
+
 ```
 class Brand < ApplicationRecord
     has_many :shoes
@@ -45,7 +46,7 @@ class Api::V1::BrandsController < ApplicationController
         end
     end
 		
-		def destroy
+	 def destroy
         @brand = Brand.find(params[:id])
         @brand.delete
 
@@ -70,6 +71,7 @@ AJAX stands for Asynchronous JavaScript and XML. AJAX is a new and popular techn
 ## Frontend
 ### HTML
 This app starts the page with basic elements in HTML. Head with style links and script links to all the files. Body with all the brand logo images and new shoe form. As the javascript function creates more elemnts and depends the user's action, the HTML will change and so does the page.
+
 ```
 <div id="new-shoe-container">
       <form id="new-shoe-form">
@@ -96,10 +98,11 @@ This app starts the page with basic elements in HTML. Head with style links and 
           </form>
     <br>
     </div>
-		```
+```
 
 ### CSS
 I'm still new to making fancy, stylish web page but I love this part mostly! Since I already finished a course for Graphic Design, changing colors of elements, choosing a font style and deciding layouts are so fun work to me. I'm not good at it yet but I really like to know more about it till I'm good!
+
 ```
 button {
   font-size: 15px;
@@ -125,7 +128,8 @@ button:hover {
 
 ### Javascript
 So the javascript is the main part that displays all the elements and has the functionalities that change the page by user's action. It fetches all the data from the json that rendered by rails backend side. First, it was hard to understand the connection between the backend and frontend, also between the different classes in the different files. I had to make sure that they all know what is going on the other side. 
-`App` class is the main guy who gets and reads the informations and give them out  to `BrandSelector` class and `DisplayManager` class. These two guys will create the brand and shoe, render them to display and send POST request, as well as DELETE request to the backend through the adapters. 
+`App` class is the main guy who gets and reads the informations and give them out  to `BrandSelector` class and `DisplayManager` class. These two guys will create the brand and shoe, render them to display and send POST request, as well as DELETE request to the backend through the adapters.
+
 ```
 class BrandSelector {
     constructor() {
@@ -163,9 +167,10 @@ class BrandSelector {
         
     }
 	}
-	```
+```
 	
 `BrandAdapter` and `ShoeAdapter`  will request POST and DELETE then fetch all the data from the rail side based on baseURL(http://localhost:3000/api/v1). This part is the most complecated in the project... I've watched Cernan and Micah's videos over and over during this project. Evrytime there's new funtionality, I had to code back and forth in between those files and sometimes I got lost what I am doing.
+
 ```
 class BrandAdapter {
 
@@ -199,7 +204,7 @@ class BrandAdapter {
             return await res.json()
         }
 			}
-		```
+```
 		
 After about the itme that I had to add this delete button for my shoe, I was able to connect the code between files and with the backend without help. I was so proud of myself that I made it work!! Well, there was a little issues and had to get some help later on but I made it work mostly by myself. That was awesome. 
 
