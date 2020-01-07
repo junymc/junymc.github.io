@@ -105,6 +105,7 @@ This app starts the page with the basic elements of HTML. Head consists of the s
 </div>
 ```
 
+
 ### CSS
 I'm a novice with incorporating CSS to create more stylish and interactive pages, but I really enjoy this element of programming because I previously attended school for Graphic Design. Color, font style, and layout selection are a fun part of the design process and I hope to become more knowledgeable and skilled so that I can take advantage of using CSS in future applications.
 
@@ -130,6 +131,7 @@ button:hover {
     color: white;
 }
 ```
+
 
 ### Javascript
 Javascript is the primary code used to display all the elements and functionalities that alter the page based on the user's action. It fetches all the data from the json that is rendered by rails on the backend. It was difficult to understand
@@ -174,7 +176,7 @@ class BrandSelector {
         }
         
     }
-	}
+}
 ```
 
 The `BrandAdapter` and `ShoeAdapter` will request POST and DELETE then fetch all the data from the backend based on baseURL(http://localhost:3000/api/v1). This was the most complicated part of the project and I had to repeatedly refer back to Cernan and Micah's videos. Every time I wanted to add additonal functionalities I would have to constantly code back and forth between those files causing me to get lost in the process.
@@ -211,7 +213,7 @@ class BrandAdapter {
             this.checkStatus(res)
             return await res.json()
         }
-			}
+}
 ```
 
 Around the time I added the function to delete a shoe, I was able to connect the code between files and the backend without any assistance. This made me really proud to finally make it all work. There were still some small issues I came across that I needed help with, but for the most part I was able to to complete it solo and that was such a great feeling. 
