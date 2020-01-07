@@ -5,10 +5,10 @@ date:       2020-01-05 21:10:33 -0500
 permalink:  javascript_project_shoe_collection_spa
 ---
 
-Finally I moved another step closer to become a programmer! Everytime I do my project, I feel like "This is the hardest one!" but after I start a new project, the hardest one changes to the new one. Not because I said that, this javascript project is definately the hartest one. Even though while I was in the half way, I was still confused and wasn't sure why I needed this function, what these classes do... Hopefully, I can understand more about javascript after I go over about my project writing this blog.
+I finally moved another step closer to becoming a programmer. Throughout my time at Flatiron I'd enter every project as if it was the most difficult only to find out the next project would be even harder. However, this javascript project has definitely been the most challenging. Even midway through the project I was still confused and could not understand why I would need certain functions or what some classes do. Hopefully as I go through the process of what I did to complete this application it will better assist with my own understanding javascript because I am having to explain it all to you through my blog entry
 
 ## Backend - Rails API
-I have two models for this API. Brand class and Shoe class. Their relationship is `has_many` and `belongs_to`. 
+I have two models for this API, the Brand class and Shoe class. Their relationship is based on `has_many` and `belongs_to`. 
 
 ```
 class Brand < ApplicationRecord
@@ -66,11 +66,12 @@ This APP uses Rack CORS for handling Cross-Origin Resource Sharing (CORS), makin
 gem 'rack-cors'
 ```
 
-AJAX stands for Asynchronous JavaScript and XML. AJAX is a new and popular technique for creating better, faster, and more interactive web applications with the help of XML, HTML, CSS, and Java Script.
+AJAX stands for Asynchronous JavaScript and XML. AJAX is a new and popular technique for creating more
+dynamic and interactive web applications with the help of XML, HTML, CSS, and Java Script.
 
 ## Frontend
 ### HTML
-This app starts the page with basic elements in HTML. Head with style links and script links to all the files. Body with all the brand logo images and new shoe form. As the javascript function creates more elemnts and depends the user's action, the HTML will change and so does the page.
+This app starts the page with the basic elements of HTML. Head consists of the style links and the script links to all the files. The Body contains the brand logo imagery and a form to add new shoes. The javascript function creates more elements and the user's action(s) determine what HTML is changed and what will be displayed on the page.
 
 ```
 <div id="new-shoe-container">
@@ -101,7 +102,10 @@ This app starts the page with basic elements in HTML. Head with style links and 
 ```
 
 ### CSS
-I'm still new to making fancy, stylish web page but I love this part mostly! Since I already finished a course for Graphic Design, changing colors of elements, choosing a font style and deciding layouts are so fun work to me. I'm not good at it yet but I really like to know more about it till I'm good!
+
+
+I'm a novice with incorporating CSS to create more stylish and interactive pages, but I really enjoy this element of programming because I previously attended school for Graphic Design. Color, font style, and layout selection are a fun part of the design process and I hope to become more knowledgeable and skilled so that I can take advantage of using CSS in future applications.
+
 
 ```
 button {
@@ -127,9 +131,12 @@ button:hover {
 ```
 
 ### Javascript
-So the javascript is the main part that displays all the elements and has the functionalities that change the page by user's action. It fetches all the data from the json that rendered by rails backend side. First, it was hard to understand the connection between the backend and frontend, also between the different classes in the different files. I had to make sure that they all know what is going on the other side.
 
-`App` class is the main guy who gets and reads the informations and give them out  to `BrandSelector` class and `DisplayManager` class. These two guys will create the brand and shoe, render them to display and send POST request, as well as DELETE request to the backend through the adapters.
+Javascript is the primary code used to display all the elements and functionalities that alter the page based on the user's action. It fetches all the data from the json that is rendered by rails on the backend. It was difficult to understand
+the connection between both front and backend , distinction of the different classes in the files. I had to understand how all these connections took place on both sides. 
+
+For purpose of explaination, the `App` class receives and reads information then distributes it to the 
+`BrandSelector`class and `DisplayManager` class. These classes create the brand and shoe then render them to display, send POST requests, as well as DELETE requests to the backend through the adapters. 
 
 ```
 class BrandSelector {
@@ -170,7 +177,8 @@ class BrandSelector {
 	}
 ```
 
-`BrandAdapter` and `ShoeAdapter`  will request POST and DELETE then fetch all the data from the rail side based on baseURL(http://localhost:3000/api/v1). This part is the most complecated in the project... I've watched Cernan and Micah's videos over and over during this project. Evrytime there's new funtionality, I had to code back and forth in between those files and sometimes I got lost what I am doing.
+The `BrandAdapter` and `ShoeAdapter` will request POST and DELETE then fetch all the data from the backend based on baseURL(http://localhost:3000/api/v1) This was the most complicated part of the project and I had to repeatedly refer back to Cernan and Micah's videos. Every time I wanted to add additonal functionalities I would have to constantly code back and forth between those files causing me to get lost in the process. 
+
 
 ```
 class BrandAdapter {
@@ -207,7 +215,12 @@ class BrandAdapter {
 			}
 ```
 
-After about the itme that I had to add this delete button for my shoe, I was able to connect the code between files and with the backend without help. I was so proud of myself that I made it work!! Well, there was a little issues and had to get some help later on but I made it work mostly by myself. That was awesome. 
+
+
+Around the time I added the function to delete a shoe I was able to connect the code between file and the backend without any assistance. This made me really proud to finally make it all work. There were still some small issues I came across that I needed help with, but for the most part I was able to to compete it solo and that was such a great feeling. 
 
 ## Conclusion
-I had a depressed momment about becoming a programmer. I doubted about myself if I can really finish this course and become a programmer successfully. Not because it was hard, I was thinking that I might not have the ablity or tanlented with coding. But I believe in myself now that I can do this and I like acomplish things that challenge me!  A lot of times I realized that I wasn't sure about what I did during this project or even other projects. But I found out I was in the right track and I just needed to fix a little part not completely wrong. That's probably I need to work on. Don't be afraid to be wrong, I can always learn from mistakes and get better!
+
+There was a moment I was depressed and uncertain of continuing to become a programmer. I doubted my ability to complete this course or that I had the necessary talent to be a successful programmer. However, through each project I've had this come across my mind and I continued to overcome these challenges. I found out that I was actually on the right track and I was only making minor mistakes that were causing all this unnecessary frustration. What I've come to realize is that it is okay to make mistakes especially in programming. These mistakes are what require you to dig deep, find the problem, analyze, and form a solution. The basic steps that have made me become a better programmer. 
+
+
