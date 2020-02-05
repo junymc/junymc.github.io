@@ -57,7 +57,7 @@ end
 
 
 
-### Ploymorphic Association
+### Polymorphic Association
 
 The polymophic association was complicated for me at first. I wasn't sure why I needed it and how I was going to use it.. I was really confused. So what is a `polymorphic association`?
 
