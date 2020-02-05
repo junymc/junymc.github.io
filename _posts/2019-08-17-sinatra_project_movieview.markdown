@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "Sinatra Project Movieview"
+title:      "Sinatra Project Movie-Review"
 date:       2019-08-17 16:16:52 -0400
 permalink:  sinatra_project_movieview
 ---
