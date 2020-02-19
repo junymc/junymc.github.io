@@ -37,10 +37,10 @@ There are so many different designs out there. Even in the grocery store, you wi
 
 ![](https://i.imgur.com/32MRBTv.jpg)
 
-![](https://i.imgur.com/uHHsKss.jpg)
+![](https://i.imgur.com/lj33bqJ.jpg)
 
 Here is my final product photo.
 
-![](https://i.imgur.com/pIXpbsJ.jpg)
+![](https://i.imgur.com/XtoIaVc.jpg)
 
 
