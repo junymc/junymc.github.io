@@ -58,10 +58,229 @@ class Api::V1::UsersController < ApplicationController
     end
 
 end
+
 ```
 
 Because of setting up the current user in the backend and render it to the frontend when it needs, the user is allowed to scratch(default value of scratch:false changes to true) the adventure and adding the evdence.
 
 ### React/Redux Frontend
-When I started learning about the React, I was enjoying it so much! It was much easier than plain Javascript and the fact that it uses JSX makes it code less but woks same way.
-What is JSX then? JSX is an XML/HTML-like syntax used by React that extends ECMAScript so that XML/HTML-like text can co-exist with JavaScript/React code. Easy way to explain is, JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement()  and/or appendChild() methods and combine the Javascrip code and HTML like syntax in one file! How great it is?
+React is a JavaScript library created by Facebook. 
+When I started learning about the React, I was enjoying it so much! It was much easier than plain Javascript and JSX makes me code less but it woks the same way.
+What is JSX then? JSX is an XML/HTML-like syntax used by React that extends ECMAScript so that XML/HTML-like text can co-exist with JavaScript/React code. Easy way to explain is, JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement()  and/or appendChild() methods, basically, it combine the Javascript code and HTML like syntax in one file! How great it is?
+
+Here is the one of the components.
+```
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+
+class Home extends React.Component {
+
+    componentDidMount() {
+        this.props.get_token()
+        this.props.setCurrentUser()
+    }
+
+    deleteHandler = () => {
+        this.props.logoutUser(this.props.token)
+        console.log("Logged out")
+        this.props.history.push("/logout")
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 id="home-top">Welcome to </h1>
+                <h3 id="home-middle">the</h3>
+                <h1 id="home-bottom">Adventure Challenge</h1>
+            </div>
+        )
+    }
+}
+
+export default withRouter(Home);
+```
+
+React components implement a render() method that takes input data and returns what to display.
+Components are independent and reusable bits of code. It has properties called `props` and parent component pass it down to its child component just like arguments.
+In my application, App.js is the very top parent component of all. It pass down user, token and setCurrentUser to most of the components so they can access to those props.
+
+```
+import React from 'react'
+import './App.css'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+
+import AdventuresContainer from './containers/AdventuresContainer'
+import EvidenceContainer from './containers/EvidenceContainer'
+import AdventureEvidence from './components/evidences/AdventureEvidence'
+import Home from './components/Home'
+import LoginContainer from './containers/LoginContainer'
+import SignupContainer from './containers/SignupContainer'
+import User from './components/users/User'
+import Logout from './components/Logout'
+import { getToken } from './actions/auth'
+import { signup, login, logout, setCurrentUser } from './actions/user'
+import { connect } from 'react-redux'
+import UserContainer from './containers/UserContainer'
+
+class App extends React.Component {
+
+componentDidMount() {
+    this.props.get_token()
+    this.props.setCurrentUser()
+  }  
+
+render() {
+  return (
+    <Router>
+      <div className="App">
+        <NavBar user={this.props.user}/>
+        <Switch>
+          <Route exact path="/adventures">
+            <AdventuresContainer 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            user={this.props.user}/>
+          </Route>
+          <Route path={`/adventures/:aid/evidence`}>
+            <EvidenceContainer 
+            token={this.props.token}
+            setCurrentUser={this.props.setCurrentUser} 
+            user={this.props.user}/>
+          </Route>
+          <Route path={`/adventures/:aid`}>
+            <AdventureEvidence 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            user={this.props.user}/>
+          </Route>
+          <Route path="/login">
+            <LoginContainer 
+            get_token={this.props.get_token} 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            loginUser={this.props.loginUser} 
+            user={this.props.user}/>
+          </Route>
+          <Route path="/signup">
+            <SignupContainer 
+            get_token={this.props.get_token} 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            signupUser={this.props.signupUser} 
+            user={this.props.user}/>
+          </Route>
+          <Route path="/welcome">
+            <User 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            user={this.props.user}/>
+          </Route>
+          <Route path="/userpage">
+            <UserContainer 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            user={this.props.user}/>
+          </Route>
+          <Route path="/logout">
+            <Logout />
+          </Route>
+          <Route exact path="/" >
+            <Home 
+            get_token={this.props.get_token} 
+            token={this.props.token} 
+            setCurrentUser={this.props.setCurrentUser}
+            logoutUser={this.props.logoutUser} 
+            user={this.props.user}/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+ }
+}
+
+const mapStateToProps = state => {
+  return {
+    token: state.csrf_token,
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+    get_token: () => dispatch(getToken()),
+    signupUser: (token, username, password) => dispatch(signup(token, username, password)),
+    loginUser: (token, username, password) => dispatch(login(token, username, password)),
+    logoutUser: token => dispatch(logout(token)),
+    setCurrentUser: () => dispatch(setCurrentUser())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+```
+
+As you see my App class is wrapped with `connect`. This is imported from `react-redux`.
+Redux is a state container for JavaScript apps. It makes it easy to manage the state of my application. It took me a while to understand these `state` and `props`. 
+State is a JavaScript object that stores a component's dynamic data and determines the component's behaviour. It is local or owned by that specific component. Because state is dynamic, it enables a component to keep track of changing information in between renders and for it to be dynamic and interactive. Also state can only be used within a class component. So I have to map the state to props so I can pass it down to child component. They are immutable and read-only in the child component.
+So basically Redux is a store for the data, and you can do three things with the data. You can call the action which is event and this is the only way you can send data from your application to your Redux store. The data can be from user interactions, API calls, or even form submissions. The action must contain the type property and the payload to be stored.
+
+```
+export const signup = (csrf_token, username, password) => {
+    
+    return async function (dispatch) {
+        try{
+            const res = await fetch("http://localhost:3001/api/v1/signup", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                body: JSON.stringify({user: {username, password}}),
+                credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            const user = await res.json()
+            dispatch({
+                type: 'SET_USER',
+                payload: user
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+```
+
+Above the file is my user action. It send the data from the form and post request to the Rails API and store the user in the payload. This action type and payload is set in the reducer file. Reducer takes the previous state of the app and return a new state based on the action passed to it. Then all of this data will be stored in the redux store.
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import './index.css';
+import App from './App';
+
+import rootReducer from './reducers'
+
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+
+const store = createStore(rootReducer,
+compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  ))
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+document.getElementById('root')
+);
+```
+
+As you see the code above, the most important thing you need to have connection with backend is this `react-thunk`.
+Redux Thunk middleware allows you to write action creators that return a function instead of an action. Thunk is a functional programming technique used to delay computation. Instead of performing some work now, you produce a function body or unevaluated expression (the “thunk”) which can optionally be used to perform the work later. 
