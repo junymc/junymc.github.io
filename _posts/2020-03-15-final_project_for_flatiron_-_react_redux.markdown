@@ -36,7 +36,6 @@ I have 4 models and some nested routes associated with the models relationship. 
 
 
 ```
-
 class Api::V1::UsersController < ApplicationController
 
     def create
@@ -63,7 +62,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
 end
-
 ```
 
 
@@ -78,7 +76,6 @@ Here is the one of the components.
 
 
 ```
-
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
@@ -106,8 +103,7 @@ class Home extends React.Component {
     }
 }
 
-export default withRouter(Home);
-
+export default withRouter(Home)
 ```
 
 
@@ -117,7 +113,6 @@ In my application, App.js is the very top parent component of all. It pass down 
 
 
 ```
-
 import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -191,8 +186,7 @@ const mapDispatchToProps = dispatch => ({
     setCurrentUser: () => dispatch(setCurrentUser())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
 
 
@@ -203,7 +197,6 @@ So basically Redux is a store for the data, and you can do three things with the
 
 
 ```
-
 export const signup = (csrf_token, username, password) => {
     
     return async function (dispatch) {
@@ -231,7 +224,6 @@ export const signup = (csrf_token, username, password) => {
         }
     }
 }
-
 ```
 
 
@@ -239,7 +231,6 @@ Above the file is my user action. It send the data from the form and post reques
 
 
 ```
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -263,8 +254,7 @@ ReactDOM.render(
         <App />
     </Provider>, 
 document.getElementById('root')
-);
-
+)
 ```
 
 
