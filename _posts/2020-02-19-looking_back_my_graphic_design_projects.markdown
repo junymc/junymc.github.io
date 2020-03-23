@@ -6,8 +6,11 @@ permalink:  looking_back_my_graphic_design_projects
 ---
 
 ## Sessions College - *Graphic Design*
-I always was interested in art and design. I wanted to go to Art High School when I was in Korea but my dad was really old fashion minded typical asian man who went against women working in those career field. So I had to stop dreaming to become a designer. But I couldn't give up learning design. And my husband was always supported my passion so he found this design school online just like he found me Flatiron school.
-I had a 3 year old boy at that time and only has been in America for 4 years so with the limited time that I could have for studying and my language barrier were challenge to me but I really enjoyed and learned so much while I was in the program! I look back my projects sometimes and still proud of myself that I did all and finished the program in time with all A and A+. So I wanted to share some of my favorite projects here.
+I always was interested in art and design. I wanted to go to a High School that focused on Art & Design growing up in Korea,  but my dad was really old fashioned and was not open to me working in that industry. So my dream to study art was placed on hold, but I never lost my passion. My husband has always been supportive so researched into online web design schools. 
+
+At the time I had a 3 year old boy and had only been in America for approximately four years. Even with the limited time I had to study and the difficulty of a language barrier I really enjoyed and learned so much through that program. Sometimes I look back on my projects and it makes me proud that I was able to complete the program with straight A's.
+Listed below are some of my favorite projects:
+
 
 ## Logo design
 Typography was an interesting subject. I learned about different types of font families and depends on the typefaces, spacing and grid expresses many different ways and so effective for especially brand logo.
@@ -15,36 +18,42 @@ Typography was an interesting subject. I learned about different types of font f
 > [Typography](https://en.wikipedia.org/wiki/Typography) is the art and technique of arranging type to make written language legible, readable, and appealing when displayed.  - Wikipedia
 > 
 
-Here are a few of my logo designs for the megazine by using Adobe Illustrator.
+Here are a few of my logo designs for a magazine I created using Adobe Illustrator.
 
 ![](https://i.imgur.com/6hUwiul.gif)
 
 
-## Megazine cover & spread
-After learing about color theory, design and compositon, my assignment was creating a megazine cover and a spread. I was so excited and had so much fun while I was doing this project!
-I'm not a big reader but I always love reading megazines and looking at pictures in the megazine. My favorite is fashion and interior megazine. I had a really hard time to deside which path I'm going to choose between fashion and interior when I was in high school. I ended up not going to either paths and became a house wife with kids but I still love those subjects. 
+## Magazine cover & spread
 
-This is my fianl cover and spread.
+After learning about color theory, design, and composition my first assignment was to create a magazine cover and spread. I'm not the biggest fan of reading, but I enjoy reading articles from magazines and browsing through pictures. 
+My favorite magazines are either fashion or interior design. 
+
+This is my final cover and spread.
 
 ![](https://i.imgur.com/ZLuqtAa.jpg)
 
 ![](https://i.imgur.com/tiFg9R8.jpg)
 
-When I designed this megazine, I wanted it to catch people's eye on the shlef in the book store or megazine booth. So I used a strong image that attracts consumers and bright yellow color of logo to give a contrast aginst the darker background so it pops up more. The spread was designed along with the photo of the model. The choice of font was not too strong to take the reader's eyes aways from the model but helps the reader to read easily about the subject. I used the same color theme, yellow and white font but on the blue beach backround gives different effect then the gray background on the cover. 
+When I designed this magazine cover my goal was to catch someone's eye if it was on the shelf of a book store or magazine booth. To do this I used a strong image to attract consumers and bright color to give contrast against the dark background. The spread was designed around the photo of the model. I used a font that was not too strong so that it did not distract the reader from the subject.  
+
 
 ## Packaging
-There are so many different designs out there and it's so hard to pick one by looking at just packaging. Even in the grocery store, you will see so many different labels on the bottles on the shelf when you walk pass sauces or drinks section. My next assignment was designing a packaging for olive oil.
-The first thing that popped up in my head after the word "olive oil" was green, nature, fresh.. those words. So I choose my color theme with those images that I pictured in my head. Then I thought about the logo that would give quality image of the product. Somthing like organic and honest brand iamge. 
+
+Even walking through the aisle of a grocery store there are many diffent designs that are used so it's hard to judge a product by packaging alone. My next assignment was to design the label for an olive oil company. When I thought of olive oil the color green, nature, and freshshness came to mind. So I chose my color theme with those images in mind. 
+
+
 
 ![](https://i.imgur.com/32MRBTv.jpg)
 
 ![](https://i.imgur.com/lj33bqJ.jpg)
 
-By giving different color themes for different flavors, consumers can imagine the taste of the oil. Example, the red gives the image of spicy taste.
+Using different color themes for different flavors, consumers can imagine the taste of the oil. For example, color the red gives the image of spiciness.
 
-Here is my final product photo.
+Below is the final product: 
 
 ![](https://i.imgur.com/XtoIaVc.jpg)
 
-## Conculusion
-Even though I'm good at drawing by using pencils, using Adobe Illustrator and creating something with that tool is so fun. It has been already almost 5 years since I graduated the Sessions College and the projects are kind of old now but I can still picture that my olive oil bottles are displaying on the shelf in the store. A good design is timeless. I maybe think wrong about my design, but I'm happy with my work and proud of myself! That's also important. You have to love what you made and be proud of it!
+## Conclusion
+
+I was skilled at traditional art using pencils, but there was definititely an enjoyable learning curve with Adobe Illustrator. 
+It's been nearly five years since I graduated from Sessions College and the projects are kind of old now, but I can still imagine this image being used on a bottle of olive oil displayed on the shelf of a store. A good design is timeless. 
