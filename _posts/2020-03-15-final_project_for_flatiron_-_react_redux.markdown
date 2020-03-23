@@ -1,17 +1,17 @@
 ---
 layout: post
-title:      "Final Project for Flatiron - React/Redux "
+title:      "Final Project for Flatiron - React/Redux : Adventure Challenge"
 date:       2020-03-15 17:52:32 -0400
 permalink:  final_project_for_flatiron_-_react_redux
 ---
 
-## Adventure Challenge
+
 Whoo.. 4 weeks of this journey with React/Redux project is finally done! I feel like it was way longer than 4 weeks.. As always, I started with struggle and ended with gaining lots of knowledge from it.
 
 I got this idea from a book that I received as a gift from my husband for our anniversary. The book is about doing things that I have no idea what it is till I scratch off from the list and putting pics as the proof after I finish the challenge. My App has the same concept. I have adventure list and it won't show exactly what it is till the user scratchs off the adventure. Then the user can see the name and description of the adventure and can post an evidnece with a photo.
-
-I built this App with React/Redux Frontend and Rails API Backend. 
-### Rails API Backend
+ 
+## Rails API Backend
+I built this App with React/Redux Frontend and Rails API Backend.
 In order to connect the backend with frontend, I needed to install `gem 'rack-cors'`. Rack::Cors provides support for Cross-Origin Resource Sharing (CORS) for Rack compatible web applications. The CORS spec allows web applications to make cross domain AJAX calls without using workarounds such as JSONP.
 
 ```
@@ -31,37 +31,42 @@ So, this cors.rb file in the config folder allows the frontend to access `localh
 I have 4 models and some nested routes associated with the models relationship. There's basic CRUD actions in the controller so user can signup/login and logout.
 
 ```
-class Api::V1::UsersController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
 
+    def auth
+        render json: {csrf_auth_token: form_authenticity_token}
+    end
+    
     def create
-        @user = User.new(user_params)
-        if @user.save
+        @user = User.find_by(username: params[:user][:username])
+        if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
             render json: @user, only: [:id, :username], status: 200
         else
-            render json: {error: "Unable to create an account."}, status: 400
+            render json: {error: "Unable to login, try again."}, status: 400
         end
     end
 
-    def current_user
-        @user = User.find_by(id: session[:user_id])
-        if @user
-            render json: @user, except: [:password_digest, :created_at, :updated_at], status: 200
-        end
+    def destroy
+        session.delete(:user_id)
+        render json: {status: 200}
     end
-
-
-    private
-    def user_params
-        params.require(:user).permit(:username, :password)
-    end
-
 end
 ```
 
 Because of setting up the current user in the backend and render it to the frontend when it needs, the user is allowed to scratch(default value of scratch:false changes to true) the adventure and adding the evdence.
 
-### React/Redux Frontend
+```
+def current_user
+        @user = User.find_by(id: session[:user_id])
+        if @user
+            render json: @user, except: [:password_digest, :created_at, :updated_at], status: 200
+        end
+end
+```
+
+
+## React/Redux Frontend
 React is a JavaScript library created by Facebook. 
 When I started learning about the React, I was enjoying it so much! It was much easier than plain Javascript and JSX makes me code less but it woks the same way.
 What is JSX then? JSX is an XML/HTML-like syntax used by React that extends ECMAScript so that XML/HTML-like text can co-exist with JavaScript/React code. Easy way to explain is, JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement()  and/or appendChild() methods, basically, it combine the Javascript code and HTML like syntax in one file! How great it is?
@@ -184,7 +189,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
 As you see my App class is wrapped with `connect`. This is imported from `react-redux`.
 Redux is a state container for JavaScript apps. It makes it easy to manage the state of my application. It took me a while to understand these `state` and `props`. 
 State is a JavaScript object that stores a component's dynamic data and determines the component's behaviour. It is local or owned by that specific component. Because state is dynamic, it enables a component to keep track of changing information in between renders and for it to be dynamic and interactive. Also state can only be used within a class component. So I have to map the state to props so I can pass it down to child component. They are immutable and read-only in the child component.
-So basically Redux is a store for the data, and you can do three things with the data. You can call the action which is event and this is the only way you can send data from your application to your Redux store. The data can be from user interactions, API calls, or even form submissions. The action must contain the type property and the payload to be stored.
+So basically Redux is a store for the data. You can call the action which is event and this is the only way you can send data from your application to your Redux store. The data can be from user interactions, API calls, or even form submissions. The action must contain the type property and the payload to be stored.
 
 ```
 export const signup = (csrf_token, username, password) => {
@@ -247,5 +252,8 @@ document.getElementById('root')
 ```
 
 
-As you see the code above, the most important thing you need to have connection with backend is this `react-thunk`.
+As you see the code above, the most important thing you need to have is this `redux-thunk`.
 Redux Thunk middleware allows you to write action creators that return a function instead of an action. Thunk is a functional programming technique used to delay computation. Instead of performing some work now, you produce a function body or unevaluated expression (the “thunk”) which can optionally be used to perform the work later. 
+
+## Conclusion
+React and Redux are powerful and fun to use to build an app. However, it can be confusing if you lose tracking all the flows. After 11 months of journey in the Flatiron school, I've built 5 projects. This React/Redux project took the longest time to finish but I can say that this one is the best one out of all. I'm not 100% done with the App and it will never be done 100% because I will keep adding more functionality and update the code as I learn more and get better. I can't wait to see people are using my app like the Facebook or Instagram in real world. One day, I will be that kind of developer.
