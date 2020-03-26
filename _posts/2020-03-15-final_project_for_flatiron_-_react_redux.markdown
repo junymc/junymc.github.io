@@ -252,7 +252,7 @@ document.getElementById('root')
 
 
 As you can see from the code above, the most important thing you need to have is this `redux-thunk`.
-Redux Thunk middleware allows you to write action creators that return a function instead of an action. Thunk is a functional programming technique used to delay computation. Instead of performing some work now, you produce a function body or unevaluated expression (the “thunk”) which can optionally be used to perform the work later. 
+Redux Thunk middleware allows you to write action creators that return a function instead of an action. Thunk is a functional programming technique used to delay computation. Instead of performing some work now, you produce a function body or unevaluated expression (the “thunk”) which can optionally be used to perform the work later. This enable us to avoid directly causing side effects in our actions, action creators, or components.
 
 ## Conclusion
 React and Redux are powerful and fun to use to build an app. However, it can be confusing if you lose track of all the flows. After eleven months attending Flatiron school I've managed to build five projects. This React/Redux project took the longest time to finish, but is also the closest to a completed app. It's not 100% done, but it's an ongoing project that I plan on adding more functionality as I continue to learn and progress as a developer. It would be amazing to see an app that I designed being used by a large company like Facebook or instagram. Hopefully over time I can reach that level of developing. 
