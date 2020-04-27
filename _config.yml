@@ -1,11 +1,11 @@
 # Site settings
 author: Juny McArdle
-title: The Coding Mom
+title: My coding diary
 header-img: img/home-bg.png
 email: juny.mcardle@gmail.com
 copyright_name: Juny McArdle
 description: > # this means to ignore newlines until "baseurl:"
-  My journey from changing diapers to changing syntax...
+  My journey as a programmer
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  junymc
