@@ -306,7 +306,7 @@ $ rails s
 ```
  Go to your browser and open http://localhost:3000 then you will see the root page to signup/login/logout.
  
- ## Conclusion
+## Conclusion
  
  The journey to complete this project was hard, but really rewarding to complete. It was more difficult then both the CLI and Sinatra projects. However, throughout the process I continued to learn more and get a better grasp of rails.
  The biggest thing that comes to mind is to understand the logic and think how to apply it in a real world scenario. If there's something wrong then there's reasoning behind it. I ran into several frustrating hurdles trying to complete this project that held me back, but also caused my troubleshooting skills to greatly improve in the process. Having the ability to analyze complex code and resolve errors are traits required for developers to be successful when creating a new application.
