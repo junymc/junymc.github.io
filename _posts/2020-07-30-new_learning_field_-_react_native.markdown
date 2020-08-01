@@ -29,4 +29,6 @@ At the beginning of 2017, Skype announced that it’s working on its completely 
 Instagram took the challenge to integrate React Native into their existing native app starting from the simplest view you can imagine: the Push Notifications view which was originally implemented as the WebView. It didn’t require building navigation infrastructure, as UI was quite simple.
 Read more stories [here](https://instagram-engineering.com/react-native-at-instagram-dd828a9a90c7#.3h4wir4zr).
 
+## Conclusion
+There's a lot more of big companies that were written in React Native for their mobile apps like Tesla, Walmart and Airbnb etc.. As we see development world is growing so much and fast, there is a lot to learn as a programmer. Even if I already know Javascript or Ruby, the syntaxs and rules are keep changing and updating so I can never just settle with what I've learned yesterday. I'm in the new learning field everyday and I should keep it up always to survive in this IT career field.
 
