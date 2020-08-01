@@ -25,7 +25,7 @@ I found about their journey [here](https://engineering.fb.com/android/dive-into-
 At the beginning of 2017, Skype announced that it’s working on its completely new app, written in React Native. It was pretty good information for all the users, as the fairly well-designed app had suffered from numerous issues. The new version got totally revamped, from the icons to the whole layout, adding a few neat features as well.
 
 ### Instagram
-![](https://i.imgur.com/wEwcnmx.jpg)
+![](https://i.imgur.com/wpIyens.jpg)
 Instagram took the challenge to integrate React Native into their existing native app starting from the simplest view you can imagine: the Push Notifications view which was originally implemented as the WebView. It didn’t require building navigation infrastructure, as UI was quite simple.
 Read more stories [here](https://instagram-engineering.com/react-native-at-instagram-dd828a9a90c7#.3h4wir4zr).
 
